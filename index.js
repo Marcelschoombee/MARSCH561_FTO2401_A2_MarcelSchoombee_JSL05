@@ -52,7 +52,8 @@ const displayPlaylists = () => {
     
     guardians.forEach(guardian => {
         const playlist = songs.filter(song => song.genre === guardian.genre);
-        const playlistHTML = `<h2>${guardian.name}'s Playlist:</h2><ul>${playlist.map(song => `<li>${song.title} by ${song.artist}</li>`).join('')}</ul>`;
+        const playlistHTML = `<div id="playlist"><h2>${guardian.name}'s Playlist:</h2>${playlist.map(song => `<div class="song">${song.title} by ${song.artist}</div>`).join('')}</div>`;
+
         playlistsElement.insertAdjacentHTML('beforeend', playlistHTML);
     });
 };
