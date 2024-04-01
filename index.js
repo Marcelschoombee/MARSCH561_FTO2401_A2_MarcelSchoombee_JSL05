@@ -23,7 +23,7 @@ const songs = [
 
 // Object containing each Guardian's preferred genre
 
-// The array defining objects, each with a 'name' and 'genre' property
+// The array defining objects, each with a 'name' and 'genre' property. 'object array'
 const guardians = [
     {name: "Star-Lord", genre: "Rock"}, 
     {name: "Gamora", genre: "Pop"},
@@ -35,7 +35,7 @@ const guardians = [
 
 // The generatePlaylist function takes two parameters 'guardians' and 'songs'
 function generatePlaylist(guardians, songs) {
-  // It uses the map() function to iterate over eac guardian in the 'gaurdians' array  
+  // It uses the map() function to iterate over each guardian in the 'gaurdians' array  
     const playlists = guardians.map(guardian => {
   // For each guardian it filters the 'songs' array the select only the 'genre' for the specigic guardian      
         const playlist = songs.filter(song => song.genre === guardian.genre);
