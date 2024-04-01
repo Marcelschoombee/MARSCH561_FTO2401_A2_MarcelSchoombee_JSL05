@@ -22,40 +22,46 @@ const songs = [
 
 
 // Object containing each Guardian's preferred genre
+
+// The array defining objects, each with a 'name' and 'genre' property
 const guardians = [
-    {name: "Star-Lord", genre: "Rock"},
+    {name: "Star-Lord", genre: "Rock"}, 
     {name: "Gamora", genre: "Pop"},
     {name: "Drax", genre: "R&B"},
     {name: "Rocket", genre: "Jazz"},
     {name: "Groot", genre: "Heavy Metal"}
-    // Add preferences for Drax, Rocket, and Groot
+    
 ];
 
-// Function to generate playlist based on preferred genre
+// The generatePlaylist function takes two parameters 'guardians' and 'songs'
 function generatePlaylist(guardians, songs) {
-    // Use the map() function to create playlists for each Guardian
+  // It uses the map() function to iterate over eac guardian in the 'gaurdians' array  
     const playlists = guardians.map(guardian => {
+  // For each guardian it filters the 'songs' array the select only the 'genre' for the specigic guardian      
         const playlist = songs.filter(song => song.genre === guardian.genre);
         return { guardian: guardian.name, playlist: playlist };
     });
 
-    return playlists;
+    return playlists; // It returns an array of objects containing the name and the list of songs
 };
 
 // Call generatePlaylist and display the playlists for each Guardian
 
-
+// The 'displayPlaylist' function is defined as an arrow function
 const displayPlaylists = () => {
+// It selects an element from the DOM with the Id 'playlist', 'song', 'song-title'    
     const playlistsElement = document.getElementById("playlist", "song", "song-title"); 
-    playlistsElement.innerHTML = ""; 
+    playlistsElement.innerHTML = ""; // Clear the HTML content
 
-    
+    // It iterates over each guardian using '.forEach'
     guardians.forEach(guardian => {
+        // 'forEach' it filters only the songs matching the genre of each guardian
         const playlist = songs.filter(song => song.genre === guardian.genre);
+        // It generates HTML for each guardian with a name and the list of the songs
         const playlistHTML = `<div id="playlist"><h2>${guardian.name}'s Playlist:</h2>${playlist.map(song => `<div class="song">${song.title} by ${song.artist}</div>`).join('')}</div>`;
-
+        // It appends the the selected HTML to the element
         playlistsElement.insertAdjacentHTML('beforeend', playlistHTML);
     });
 };
-
+// It triggers the 'displayPlayList' function when the window loads
 window.onload = displayPlaylists;
